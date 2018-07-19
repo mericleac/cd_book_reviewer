@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Success</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        p {
+            color: green;
+        }
+        body {
+            padding: 2% 5%;
+        }
+    
+    </style>
+</head>
+<body>
+    <h2>Success! Welcome, {{ user.first_name }}!</h2>
+    <p>Successfully {{ request.session.action }}!</p>
+
+</body>
+</html>

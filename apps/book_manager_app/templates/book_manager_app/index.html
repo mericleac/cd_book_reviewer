@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Books</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+</head>
+<body>
+    <h2>Welcome, {{ user.first_name }}!</h2>
+    <a href="/books/add">Add Book and Review</a>
+    <a href="/logout">Logout</a>
+    <div class="container">
+        <h3>Recent Book Reviews</h3>
+        {% for review in reviews reversed %}
+            <a href="/books/{{ review.book.id }}">{{ review.book.title }}</a>
+            <p>Rating:</p>
+            <p><a href="/users/{{ review.user.id }}">{{ review.user.first_name }}</a> says: {{ review.review }}</p>
+            <p>Posted on {{ review.created_at }}</p>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <h3>Other Books with Reviews: </h3>
+        <div>
+            {% for book in books %}
+            <a href="/books/{{ book.id }}">{{ book.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
