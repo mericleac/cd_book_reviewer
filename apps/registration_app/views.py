@@ -40,3 +40,18 @@ def success (request):
         return render(request, 'registration_app/success.html', { 'user': User.objects.get(id=request.session['current_user']) })
     else:
         return redirect('/')
+
+def show_user(request, user_id):
+    from django.db.models import Count
+    user = User.objects.get(id=int(user_id))
+    total_reviews = User.objects.annotate(num_reviews=Count('reviews')).order_by('num_reviews')
+    context = {
+        'user': user,
+        'reviews': user.reviews.all(),
+        'total_reviews': total_reviews.get(id=int(user_id)).num_reviews,
+    }
+    return render(request, 'registration_app/user.html', context)
+
+def logout (request):
+    request.session['current_user'] = None
+    return redirect('/')

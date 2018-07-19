@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Add Book and Review</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+</head>
+<body>
+    <a href="/books">Home</a>
+    <a href="/logout">Logout</a>
+    <h2>Add a New Book Title and a Review</h2>
+    <form action="/books/process_add" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <label class="col-sm-2">Book Title:</label>
+            <input class="col-sm-6 form-control" type="text" name="title">
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Author:</label>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 small">Choose from the list:</label>
+            <select class="col-sm-6 form-control" type="text" name="author">
+                {% for book in books %}
+                <option value="{{ book.author }}">{{ book.author }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 small">Or add a new author:</label>
+            <input class="col-sm-6 form-control" type="text" name="author">
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Review:</label>
+            <textarea class="col-sm-6 form-control" rows="5" name="review"></textarea>
+        </div>
+        <div class="row">
+            <label class="col-sm-2">Rating</label>
+            <select class="col-sm-2 form-control" name="stars">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <label class="col-sm-2">stars.</label>
+        </div>
+        <div class="row">
+            <input class="btn btn-primary" type="submit" value="Add Book and Review">
+        </div>
+    </form>
+</body>
+</html>

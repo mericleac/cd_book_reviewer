@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+</head>
+<body>
+    <a href="/books">Home</a>
+    <a href="/books/add">Add Book and Review</a>
+    <a href="/logout">Logout</a>
+    <p>User Alias: {{ user.first_name }}</p>
+    <p>Name: {{ user.fullname }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Total Reviews: {{ total_reviews }}</p>
+    <h4>Posted Reviews on the following books:</h4>
+    {% for review in reviews %}
+    <a href="/books/{{ review.book__id }}">{{ review.book__title }}</a>
+    {% endfor %}
+</body>
+</html>

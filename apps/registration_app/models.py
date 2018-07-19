@@ -56,9 +56,5 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def fullname(self):
         return self.first_name + " " + self.last_name
-    
-    def total_reviews(self):
-        reviews = self.reviews.all()
-        return len(reviews)
 
     objects = UserManager()
